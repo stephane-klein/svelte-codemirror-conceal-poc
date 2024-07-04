@@ -1,10 +1,12 @@
 <script>
     import "./editor.css";
     import { onMount } from "svelte";
-    import {basicSetup as CodeBasicSetup} from "codemirror";
-    import {EditorView } from "@codemirror/view";
-    import {Compartment} from "@codemirror/state";
-    import {markdown} from "@codemirror/lang-markdown";
+    import { basicSetup as CodeBasicSetup } from "codemirror";
+    import { EditorView } from "@codemirror/view";
+    import { EditorState, Compartment } from "@codemirror/state";
+    import { markdown } from "@codemirror/lang-markdown";
+    import { Extensions } from "./parser.js";
+    import wikiPlugin from "./plugin.js";
 
     let languageConf = new Compartment;
     let codeElement;
@@ -13,11 +15,20 @@
     onMount(() => {
         _codeEditorView = new EditorView({
             parent: codeElement,
-            doc: "Hello world",
-            extensions: [
-                CodeBasicSetup,
-                languageConf.of(markdown())
-            ]
+            state: EditorState.create({
+                doc: `This is a [[markdown]] text containing several [[WikiLink|Wiki links]].
+
+For example, one [[WikiLink]] without Alias and another [[WikiLink|WikiLink with Alias]].`,
+                extensions: [
+                    CodeBasicSetup,
+                    wikiPlugin,
+                    languageConf.of(markdown({
+                        extensions: [
+                            Extensions
+                        ]
+                    }))
+                ],
+            })
         });
     });
 </script>

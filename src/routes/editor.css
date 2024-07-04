@@ -7,3 +7,11 @@
   padding: 5px 0;
   margin-bottom: 23px;
 }
+
+.cm-content .wikilink {
+    padding: 0.2em 0.4em;
+    margin: 0;
+    font-size: 85%;
+    background-color: #afb8c133;
+    border-radius: 0.4em
+}
