@@ -11,3 +11,4 @@ $ pnpm run dev
 $ firefox http://localhost:5173/
 ```
 
+![](screencast.gif)
