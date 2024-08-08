@@ -24,3 +24,5 @@ To create this project, I drew heavily on the source code of the following proje
 Screencast:
 
 ![](screencast.gif)
+
+I spent 11h48 to implement this POC 🙈
