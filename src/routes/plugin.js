@@ -32,7 +32,7 @@ function wikiLinkDecorators(view) {
             if (!match) return;
             const [_fullMatch, page, _pipePart, alias] = match;
 
-            if (isCursorInRange(view.state, [from, to])) {
+            if (isCursorInRange(view.state, [from, to]) && view.hasFocus) {
                 return
             }
 
